@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Rose Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+background: radial-gradient(circle at center,#ff758c,#ff4e50,#1a0010);
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:'Poppins',sans-serif;
+}
+
+/* 🌹 Falling rose */
+.rose{
+position:absolute;
+top:-100px;
+animation:fall linear infinite;
+pointer-events: none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* Beautiful heading */
+h1{
+position:absolute;
+top:30px;
+font-family:'Great Vibes',cursive;
+font-size:60px;
+color:white;
+text-shadow:
+0 0 10px pink,
+0 0 20px red,
+0 0 40px hotpink;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px pink;}
+to{ text-shadow:0 0 30px red;}
+}
+
+/* ✨ Button glow */
+button{
+
+padding:20px 50px;
+font-size:22px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4e50;
+cursor:pointer;
+font-weight:bold;
+
+box-shadow:
+0 0 10px white,
+0 0 20px pink,
+0 0 40px red;
+
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+/* 🎁 Gift box */
+#giftBox{
+
+display:none;
+
+position:absolute;
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:
+
+0 0 20px pink,
+
+0 0 40px red;
+
+animation:boxAppear 2s ease forwards;
+
+}
+
+@keyframes boxAppear{
+
+from{
+transform:scale(0);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* Rose image */
+#giftBox img{
+
+width:150px;
+
+}
+
+/* Video */
+video{
+
+width:200px;
+
+margin-top:10px;
+
+border-radius:10px;
+
+}
+
+/* 💖 Hearts */
+.heart{
+
+position:absolute;
+
+font-size:30px;
+
+animation:explode 2s forwards;
+
+}
+
+@keyframes explode{
+
+from{
+transform:translate(0,0);
+opacity:1;
+}
+
+to{
+transform:translate(var(--x),var(--y));
+opacity:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Happy Rose Day My Anu 🌹</h1>
+
+<button onclick="startLove()" id="btn">
+Click Here My Love ❤️
+</button>
+
+<div id="giftBox">
+
+<img src="rose.png">
+
+<h2 style="color:#ff4e50">
+
+ANU ❤️<br>
+
+This rose is for you and this line is for you 🌹<br>
+
+Gulab ki khushboo se mehka tera khayal hai,
+Tu paas ho ya door, dil ko bas tera hi khayal hai. 💖<br>
+
+Happy Rose Day Anu🌹<br>
+
+– Siddhant
+
+</h2>
+
+<video src="teddy.mp4" autoplay muted loop></video>
+
+</div>
+
+<script>
+
+/* 🌹 Falling roses */
+function createRose(){
+
+let rose=document.createElement("div");
+
+rose.innerHTML="🌹";  
+
+rose.classList.add("rose");
+
+rose.style.left=Math.random()*100+"vw";
+
+rose.style.animationDuration=(3+Math.random()*5)+"s";
+
+rose.style.fontSize="30px"
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+rose.remove();
+},8000);
+
+}
+
+setInterval(createRose,300);
+
+
+/* 💖 Start love */
+function startLove(){
+
+document.getElementById("btn").style.display="none";
+
+heartExplosion();
+
+setTimeout(()=>{
+document.getElementById("giftBox").style.display="block";
+},1500);
+
+}
+
+/* 💥 Heart explosion */
+function heartExplosion(){
+
+for(let i=0;i<50;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.classList.add("heart");
+
+heart.style.left="50%";
+
+heart.style.top="50%";
+
+heart.style.setProperty("--x",(Math.random()*800-400)+"px");
+
+heart.style.setProperty("--y",(Math.random()*600-300)+"px");
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},2000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
